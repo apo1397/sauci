@@ -25,7 +25,12 @@ body {
 }
 
 h1 {
+    margin-bottom: 10px;
+}
+
+.description {
     margin-bottom: 20px;
+    color: #555;
 }
 
 .links a {
