@@ -8,6 +8,11 @@
     src: url('fonts/como-font/Como-Bold.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'Como-Regular';
+    src: url('fonts/como-font/Como-Light.ttf') format('truetype');
+}
+
 body {
     font-family: 'Lie to Me', Arial, sans-serif;
     display: flex;
@@ -72,6 +77,7 @@ h1 {
     transition: background 0.3s, transform 0.3s, color 0.3s;
     font-size: 18px;
     font-weight: bold; /* Set button font weight to bold */
+    font-family: 'Como-Regular', sans-serif; /* Use Como-Regular for the buttons */
 }
 
 .links a:hover {
