@@ -14,6 +14,14 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+    width: 400px;
+}
+
+.banner {
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
 }
 
 h1 {
@@ -21,7 +29,9 @@ h1 {
 }
 
 .links a {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 10px 0;
     padding: 10px;
     background: #007bff;
@@ -33,4 +43,21 @@ h1 {
 
 .links a:hover {
     background: #0056b3;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .links a {
+        padding: 8px;
+    }
 }
