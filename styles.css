@@ -14,7 +14,7 @@
 }
 
 body {
-    font-family: 'Lie to Me', Arial, sans-serif;
+    font-family: 'Lie to Me', 'Segoe UI Emoji', 'Segoe UI Symbol', Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
