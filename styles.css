@@ -81,8 +81,8 @@ h1 {
 }
 
 .links a:hover {
-    background: #0a093f; /* Updated hover background color */
-    color: #bd5769; /* Updated hover font color */
+    /* background: #0a093f; 
+    color: #bd5769;  */
     transform: scale(1.05);
 }
 
