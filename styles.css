@@ -56,6 +56,13 @@ h1 {
     font-family: 'Poppins', sans-serif; /* Use Poppins for the paragraph */
 }
 
+.timings{
+
+    color: #555;
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif; /* Use Poppins for the paragraph */
+}
+
 #slogan {
     font-family: 'Como-Bold', sans-serif; /* Use Como-Bold for the slogan */
 }
