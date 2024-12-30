@@ -53,6 +53,91 @@
       gtag('config', 'G-DCGH5LNBSE');
     </script>
 
+    <style>
+        /* Styles for the popup modal */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 300px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .modal-content p {
+            margin: 2px 0;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Confetti styles */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #f39c12;
+            opacity: 0.7;
+            animation: fall 3s infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Prevent body scroll when modal is open */
+        .no-scroll {
+            overflow: hidden;
+        }
+    </style>
+
 </head>
 <body>
     <div class="container" role="main">
@@ -67,9 +152,9 @@
             <a style="margin-top:0 ;" href="https://link.zomato.com/xqzv/rshare?id=89994542305632fe" target="_blank" aria-label="Order on Zomato">
                 <img src="images/zomato-2.svg" alt="Zomato" class="icon"> Order on Zomato
             </a>
-            <!-- <a href="https://www.swiggy.com/direct/brand/576271?source=swiggy-direct&subSource=generic" target="_blank" aria-label="Order on Swiggy">
+            <a href="https://www.swiggy.com/direct/brand/576271?source=swiggy-direct&subSource=generic" target="_blank" aria-label="Order on Swiggy">
                 <img src="images/swiggy-1.svg" alt="Swiggy" class="icon"> Order on Swiggy
-            </a> -->
+            </a>
             <a href="https://tally.so/r/31J70l?utm_source=links.sauci.in" target="_blank" aria-label="Feedback Form">
                 <img src="images/feedback.png" alt="Feedback" class="icon"> Feedback Form
             </a>
@@ -101,5 +186,71 @@
     </div> -->
     <script src="script.js"></script>
     
+    <!-- Popup Modal -->
+    <div id="thankYouModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>Thanks for ordering from us!</p> 
+            <p>Please do rate us on Zomato and Swiggy!</p> 
+            <p>We'd love to hear your feedback!</p> 
+            <div class="tenor-gif-embed" data-postid="17668379396350690066" data-share-method="host" data-aspect-ratio="0.565553" data-width="100%">
+                <a href="https://tenor.com/view/cat-dance-dancing-cat-chinese-dancing-cat-funny-cat-meme-cat-gif-17668379396350690066">Cat Dance Dancing Cat GIF</a>
+            </div>
+            <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+        </div>
+    </div>
+
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Function to show the modal
+        function showModal() {
+            var modal = document.getElementById("thankYouModal");
+            modal.style.display = "flex";
+            document.body.classList.add('no-scroll'); // Disable body scroll
+            createConfetti();
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            var modal = document.getElementById("thankYouModal");
+            modal.style.display = "none";
+            document.body.classList.remove('no-scroll'); // Enable body scroll
+        }
+
+        // Check if the utm_source is 'thank_you' and show the modal
+        window.onload = function() {
+            if (getUrlParameter('utm_source') === 'thank_you') {
+                showModal();
+            }
+        };
+
+        // Function to create confetti
+        function createConfetti() {
+            for (let i = 0; i < 100; i++) {
+                let confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.backgroundColor = getRandomColor();
+                document.body.appendChild(confetti);
+
+                setTimeout(() => {
+                    confetti.remove();
+                }, 3000);
+            }
+        }
+
+        // Function to get a random color
+        function getRandomColor() {
+            const colors = ['#f39c12', '#e74c3c', '#9b59b6', '#3498db', '#2ecc71'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+    </script>
 </body>
 </html>
